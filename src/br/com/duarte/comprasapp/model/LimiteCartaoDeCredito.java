@@ -1,16 +1,15 @@
 package br.com.duarte.comprasapp.model;
 
 public class LimiteCartaoDeCredito extends Cartao implements DadosDoCliente{
-    private double limiteDoCartao;
+    private String limiteDoCartao;
 
-    public double getLimiteDoCartao() {
+    public String getLimiteDoCartao() {
         return limiteDoCartao;
     }
 
-    public void setLimiteDoCartao(double limiteDoCartao) {
+    public void setLimiteDoCartao(String limiteDoCartao) {
         this.limiteDoCartao = limiteDoCartao;
     }
-
 
     @Override
     public String getMensagem() {
@@ -20,12 +19,10 @@ public class LimiteCartaoDeCredito extends Cartao implements DadosDoCliente{
                     Titular: %s
                     Numero do Cartao: %s
                     Bandeira: %s
-                    Banco Emissor: %s
-                    Limite total: R$ %.2f
+                    Banco Emissor: %S
                 
                 **************************************************************************
                 
-                """.formatted(getNomeDoTitular(), getNumeroDoCartao(), getBandeira(), getBancoEmissor(),
-                        getLimiteDoCartao());
+                """.formatted(getNomeDoTitular(), getNumeroDoCartao(), getBandeira(), getBancoEmissor());
     }
 }

@@ -5,6 +5,8 @@ public class Cartao {
     private String numeroDoCartao;
     private String bandeira;
     private String bancoEmissor;
+    private double valorDaCompra;
+    private String descricaoDaCompra;
 
     public String getNomeDoTitular() {
         return nomeDoTitular;
@@ -36,5 +38,21 @@ public class Cartao {
 
     public void setBancoEmissor(String bancoEmissor) {
         this.bancoEmissor = bancoEmissor;
+    }
+
+    public double getValorDaCompra() {
+        return valorDaCompra;
+    }
+
+    public void setValorDaCompra(double valorDaCompra) {
+        this.valorDaCompra = valorDaCompra;
+    }
+
+    public String getDescricaoDaCompra() {
+        return descricaoDaCompra;
+    }
+
+    public void setDescricaoDaCompra(String descricaoDaCompra) {
+        this.descricaoDaCompra = descricaoDaCompra;
     }
 }

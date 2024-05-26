@@ -3,41 +3,81 @@ package br.com.duarte.comprasapp.main;
 import br.com.duarte.comprasapp.model.LimiteCartaoDeCredito;
 import br.com.duarte.comprasapp.model.SaldoCartaoDebito;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+        String opcao;
 
-//        LimiteCartaoDeCredito cartaoDeCredito = new LimiteCartaoDeCredito();
-//
-//        cartaoDeCredito.setNomeDoTitular("Rodrigo Duarte");
-//        cartaoDeCredito.setNumeroDoCartao("1234 1234 1234 1234");
-//        cartaoDeCredito.setBandeira("Visa");
-//        cartaoDeCredito.setBancoEmissor("CEF");
-//        cartaoDeCredito.setLimiteDoCartao(10000.00);
-//
-//        System.out.println(cartaoDeCredito.getMensagem());
+        System.out.println("""
+                *************************************************************
+                
+                Opção de Pagamento via Cartão:
+                
+                1 - Crédito
+                2 - Débito
+                
+               
+                *************************************************************
+                """);
 
-        SaldoCartaoDebito cartaoDebito = new SaldoCartaoDebito();
+        System.out.print("Digite a opção desejada: ");
+        opcao = scanner.nextLine();
 
-        System.out.print("Digite o nome do titular do cartão: ");
-        cartaoDebito.setNomeDoTitular(scanner.nextLine());
+        switch (opcao){
+            case "1":
 
-        System.out.print("Digite o número do cartão: ");
-        cartaoDebito.setNumeroDoCartao(scanner.nextLine());
+                LimiteCartaoDeCredito cartaoDeCredito = new LimiteCartaoDeCredito();
 
-        System.out.print("Digite a bandeira do cartão: ");
-        cartaoDebito.setBandeira(scanner.nextLine());
+                System.out.print("Digite o nome do titular do cartão de crédito: ");
+                cartaoDeCredito.setNomeDoTitular(scanner.nextLine());
 
-        System.out.print("Digite o nome do banco ao qual o cartão está vinculado: ");
-        cartaoDebito.setBancoEmissor(scanner.nextLine());
+                System.out.print("Digite o número do cartão: ");
+                cartaoDeCredito.setNumeroDoCartao(scanner.nextLine());
 
-        System.out.print("Informe o saldo atual em conta: ");
-        cartaoDebito.setSaldoEmConta(scanner.nextDouble());
+                System.out.print("Digite a bandeira do cartão: ");
+                cartaoDeCredito.setBandeira(scanner.nextLine());
 
-        scanner.close();
+                System.out.print("Digite o nome do banco ao qual o cartão está vinculado: ");
+                cartaoDeCredito.setBancoEmissor(scanner.nextLine());
 
-        System.out.println(cartaoDebito.getMensagem());
+                System.out.print("Informe o limite atual do cartão: ");
+                cartaoDeCredito.setLimiteDoCartao(scanner.nextDouble());
+
+                scanner.close();
+
+                System.out.println(cartaoDeCredito.getMensagem());
+                break;
+
+            case "2":
+
+                SaldoCartaoDebito cartaoDebito = new SaldoCartaoDebito();
+
+                System.out.print("Digite o nome do titular do cartão de débito: ");
+                cartaoDebito.setNomeDoTitular(scanner.nextLine());
+
+                System.out.print("Digite o número do cartão: ");
+                cartaoDebito.setNumeroDoCartao(scanner.nextLine());
+
+                System.out.print("Digite a bandeira do cartão: ");
+                cartaoDebito.setBandeira(scanner.nextLine());
+
+                System.out.print("Digite o nome do banco ao qual o cartão está vinculado: ");
+                cartaoDebito.setBancoEmissor(scanner.nextLine());
+
+                System.out.print("Informe o saldo atual em conta: ");
+                cartaoDebito.setSaldoEmConta(scanner.nextDouble());
+
+                scanner.close();
+
+                System.out.println(cartaoDebito.getMensagem());
+                break;
+
+            default:
+                System.out.println("Opção Inválida!");
+                break;
+        }
     }
 }

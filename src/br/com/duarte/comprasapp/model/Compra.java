@@ -1,6 +1,6 @@
 package br.com.duarte.comprasapp.model;
 
-public class Compra {
+public class Compra implements Comparable<Compra>{
     private double valorDaCompra;
     private String descricaoDaCompra;
 
@@ -23,5 +23,10 @@ public class Compra {
     @Override
     public String toString() {
         return "Produto: " + getDescricaoDaCompra() + " - " + " Valor: R$" + getValorDaCompra();
+    }
+
+    @Override
+    public int compareTo(Compra compra) {
+        return Double.valueOf(this.valorDaCompra).compareTo(Double.valueOf(compra.valorDaCompra));
     }
 }

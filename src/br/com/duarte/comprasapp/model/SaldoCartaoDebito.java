@@ -1,13 +1,13 @@
 package br.com.duarte.comprasapp.model;
 
 public class SaldoCartaoDebito extends Cartao implements DadosDoCliente{
-    private double saldoEmConta;
+    private String saldoEmConta;
 
-    public double getSaldoEmConta() {
+    public String getSaldoEmConta() {
         return saldoEmConta;
     }
 
-    public void setSaldoEmConta(double saldoEmConta) {
+    public void setSaldoEmConta(String saldoEmConta) {
         this.saldoEmConta = saldoEmConta;
     }
 
@@ -20,11 +20,9 @@ public class SaldoCartaoDebito extends Cartao implements DadosDoCliente{
                     Numero do Cartao: %s
                     Bandeira: %s
                     Banco Emissor: %s
-                    Saldo em conta: R$ %.2f
                 
                 **************************************************************************
                 
-                """.formatted(getNomeDoTitular(), getNumeroDoCartao(), getBandeira(), getBancoEmissor(),
-                getSaldoEmConta());
+                """.formatted(getNomeDoTitular(), getNumeroDoCartao(), getBandeira(), getBancoEmissor());
     }
 }

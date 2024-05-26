@@ -1,5 +1,8 @@
 package br.com.duarte.comprasapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LimiteCartaoDeCredito extends Cartao implements DadosDoCliente{
     private String limiteDoCartao;
 

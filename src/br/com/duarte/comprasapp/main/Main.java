@@ -25,69 +25,70 @@ public class Main {
                
                 *************************************************************
                 """);
+        try {
+            System.out.print("Digite a opção desejada: ");
+            opcao = scanner.nextInt();
 
-        System.out.print("Digite a opção desejada: ");
-        opcao = scanner.nextInt();
-        scanner.nextLine();
+            scanner.nextLine();
 
-        switch (opcao){
-            case 1:
+            switch (opcao){
+                case 1:
 
-                LimiteCartaoDeCredito cartaoDeCredito = new LimiteCartaoDeCredito();
+                    LimiteCartaoDeCredito cartaoDeCredito = new LimiteCartaoDeCredito();
 
-                System.out.print("Digite o nome do titular do cartão de crédito: ");
-                cartaoDeCredito.setNomeDoTitular(scanner.nextLine());
+                    System.out.print("Digite o nome do titular do cartão de crédito: ");
+                    cartaoDeCredito.setNomeDoTitular(scanner.nextLine());
 
-                System.out.print("Digite o número do cartão: ");
-                cartaoDeCredito.setNumeroDoCartao(scanner.nextLine());
+                    System.out.print("Digite o número do cartão: ");
+                    cartaoDeCredito.setNumeroDoCartao(scanner.nextLine());
 
-                System.out.print("Digite a bandeira do cartão: ");
-                cartaoDeCredito.setBandeira(scanner.nextLine());
+                    System.out.print("Digite a bandeira do cartão: ");
+                    cartaoDeCredito.setBandeira(scanner.nextLine());
 
-                System.out.print("Digite o nome do banco ao qual o cartão está vinculado: ");
-                cartaoDeCredito.setBancoEmissor(scanner.nextLine());
+                    System.out.print("Digite o nome do banco ao qual o cartão está vinculado: ");
+                    cartaoDeCredito.setBancoEmissor(scanner.nextLine());
 
-                System.out.print("Informe o limite atual do cartão: R$ ");
-                cartaoDeCredito.setLimiteDoCartao(scanner.nextLine());
+                    System.out.print("Informe o limite atual do cartão: R$ ");
+                    cartaoDeCredito.setLimiteDoCartao(scanner.nextLine());
 
-                convertDoubleLimiteSaldo = Double.parseDouble(cartaoDeCredito.getLimiteDoCartao());
+                    convertDoubleLimiteSaldo = Double.parseDouble(cartaoDeCredito.getLimiteDoCartao());
 
-                System.out.println("""
+                    System.out.println("""
                         
                             ************* Dados da Compra *************
                         
                         """);
 
-                while(comprar != 0) {
-                    Compra compra = new Compra();
+                    while(comprar != 0) {
+                        Compra compra = new Compra();
 
-                    System.out.println("Limite atual do Cartão: R$ " + convertDoubleLimiteSaldo);
+                        System.out.println("Limite atual do Cartão: R$ " + convertDoubleLimiteSaldo);
 
-                    System.out.println("""
+                        System.out.println("""
                             
                             -------------------------------------------------------
                             
                             """);
 
-                    System.out.print("Digite a descrição da compra: ");
-                    compra.setDescricaoDaCompra(scanner.nextLine());
+                        System.out.print("Digite a descrição da compra: ");
+                        compra.setDescricaoDaCompra(scanner.nextLine());
 
-                    System.out.print("Digite o valor da compra: R$ ");
-                    compra.setValorDaCompra(scanner.nextDouble());
+                        System.out.print("Digite o valor da compra: R$ ");
+                        compra.setValorDaCompra(scanner.nextDouble());
 
-                    if(convertDoubleLimiteSaldo >= compra.getValorDaCompra()) {
+                        if(convertDoubleLimiteSaldo >= compra.getValorDaCompra()) {
 
-                        listaDeCompras.add(compra);
+                            listaDeCompras.add(compra);
 
-                        System.out.println("""
+                            System.out.println("""
                                 
                                 Compra realizada!
                                 
                                 """);
 
-                        convertDoubleLimiteSaldo -= compra.getValorDaCompra();
-                    } else {
-                        System.out.println("""
+                            convertDoubleLimiteSaldo -= compra.getValorDaCompra();
+                        } else {
+                            System.out.println("""
                                     
                                     Compra não realizada!
                                     
@@ -96,90 +97,90 @@ public class Main {
                                     Operação finalizada!
                                     
                                 """);
-                        break;
+                            break;
+                        }
+
+                        System.out.print("Digite 0 para sair ou 1 para continuar: ");
+                        comprar = scanner.nextInt();
+
+                        System.out.println("");
+
+                        scanner.nextLine();
+
                     }
 
-                    System.out.print("Digite 0 para sair ou 1 para continuar: ");
-                    comprar = scanner.nextInt();
+                    scanner.close();
 
+                    System.out.println(cartaoDeCredito.getMensagem());
+
+                    System.out.println("Quantidade de compras realizadas: " + listaDeCompras.size());
                     System.out.println("");
 
-                    scanner.nextLine();
+                    Collections.sort(listaDeCompras);
 
-                }
+                    for (Compra compra : listaDeCompras) {
+                        System.out.println(compra);
+                    }
 
-                scanner.close();
+                    break;
 
-                System.out.println(cartaoDeCredito.getMensagem());
+                case 2:
 
-                System.out.println("Quantidade de compras realizadas: " + listaDeCompras.size());
-                System.out.println("");
+                    SaldoCartaoDebito cartaoDebito = new SaldoCartaoDebito();
 
-                Collections.sort(listaDeCompras);
+                    System.out.print("Digite o nome do titular do cartão de débito: ");
+                    cartaoDebito.setNomeDoTitular(scanner.nextLine());
 
-                for (Compra compra : listaDeCompras) {
-                    System.out.println(compra);
-                }
+                    System.out.print("Digite o número do cartão: ");
+                    cartaoDebito.setNumeroDoCartao(scanner.nextLine());
 
-                break;
+                    System.out.print("Digite a bandeira do cartão: ");
+                    cartaoDebito.setBandeira(scanner.nextLine());
 
-            case 2:
+                    System.out.print("Digite o nome do banco ao qual o cartão está vinculado: ");
+                    cartaoDebito.setBancoEmissor(scanner.nextLine());
 
-                SaldoCartaoDebito cartaoDebito = new SaldoCartaoDebito();
+                    System.out.print("Informe o saldo atual da conta corrente: R$ ");
+                    cartaoDebito.setSaldoEmConta(scanner.nextLine());
 
-                System.out.print("Digite o nome do titular do cartão de débito: ");
-                cartaoDebito.setNomeDoTitular(scanner.nextLine());
+                    convertDoubleLimiteSaldo = Double.parseDouble(cartaoDebito.getSaldoEmConta());
 
-                System.out.print("Digite o número do cartão: ");
-                cartaoDebito.setNumeroDoCartao(scanner.nextLine());
-
-                System.out.print("Digite a bandeira do cartão: ");
-                cartaoDebito.setBandeira(scanner.nextLine());
-
-                System.out.print("Digite o nome do banco ao qual o cartão está vinculado: ");
-                cartaoDebito.setBancoEmissor(scanner.nextLine());
-
-                System.out.print("Informe o saldo atual da conta corrente: R$ ");
-                cartaoDebito.setSaldoEmConta(scanner.nextLine());
-
-                convertDoubleLimiteSaldo = Double.parseDouble(cartaoDebito.getSaldoEmConta());
-
-                System.out.println("""
+                    System.out.println("""
                         
                             ************* Dados da Compra *************
                         
                         """);
 
-                while(comprar != 0) {
-                    Compra compra = new Compra();
+                    while(comprar != 0) {
+                        Compra compra = new Compra();
 
-                    System.out.println("Saldo em conta atual: R$ " + convertDoubleLimiteSaldo);
+                        System.out.println("Saldo em conta atual: R$ " + convertDoubleLimiteSaldo);
 
-                    System.out.println("""
+                        System.out.println("""
                             
                             -------------------------------------------------------
                             
                             """);
 
-                    System.out.print("Digite a descrição da compra: ");
-                    compra.setDescricaoDaCompra(scanner.nextLine());
+                        System.out.print("Digite a descrição da compra: ");
+                        compra.setDescricaoDaCompra(scanner.nextLine());
 
-                    System.out.print("Digite o valor da compra: R$ ");
-                    compra.setValorDaCompra(scanner.nextDouble());
+                        System.out.print("Digite o valor da compra: R$ ");
+                        compra.setValorDaCompra(scanner.nextDouble());
 
-                    if(convertDoubleLimiteSaldo >= compra.getValorDaCompra()) {
+                        if(convertDoubleLimiteSaldo >= compra.getValorDaCompra()) {
 
-                        listaDeCompras.add(compra);
+                            listaDeCompras.add(compra);
 
-                        System.out.println("""
+                            System.out.println("""
                                 
                                 Compra realizada!
                                 
                                 """);
 
-                        convertDoubleLimiteSaldo -= compra.getValorDaCompra();
-                    } else {
-                        System.out.println("""
+                            convertDoubleLimiteSaldo -= compra.getValorDaCompra();
+                        } else {
+                            System.out.println("""
                                     
                                     Compra não realizada!
                                     
@@ -188,36 +189,39 @@ public class Main {
                                     Operação finalizada!
                                     
                                 """);
-                        break;
+                            break;
+                        }
+
+                        System.out.print("Digite 0 para sair ou 1 para continuar: ");
+                        comprar = scanner.nextInt();
+
+                        System.out.println("");
+
+                        scanner.nextLine();
+
                     }
 
-                    System.out.print("Digite 0 para sair ou 1 para continuar: ");
-                    comprar = scanner.nextInt();
+                    scanner.close();
 
+                    System.out.println(cartaoDebito.getMensagem());
+
+                    System.out.println("Quantidade de compras realizadas: " + listaDeCompras.size());
                     System.out.println("");
 
-                    scanner.nextLine();
+                    Collections.sort(listaDeCompras);
 
-                }
+                    for (Compra compra : listaDeCompras) {
+                        System.out.println(compra);
+                    }
 
-                scanner.close();
+                    break;
 
-                System.out.println(cartaoDebito.getMensagem());
-
-                System.out.println("Quantidade de compras realizadas: " + listaDeCompras.size());
-                System.out.println("");
-
-                Collections.sort(listaDeCompras);
-
-                for (Compra compra : listaDeCompras) {
-                    System.out.println(compra);
-                }
-
-                break;
-
-            default:
-                System.out.println("Opção Inválida!");
-                break;
+                default:
+                    System.out.println("Opção Inválida!");
+                    break;
+            }
+        }catch (Exception err) {
+            System.err.println("O valor digitado não corresponde a um número inteiro. " + err);
         }
     }
 }
